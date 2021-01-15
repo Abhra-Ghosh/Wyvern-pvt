@@ -1336,7 +1336,6 @@ function searchSeats() {
             console.error('Error:', error);
         });
 
-
 }
 
 function showInsertFlight() {

@@ -23,64 +23,7 @@ function displayPath() {
 
 $(".btn").click(searchFlights)
 
-// fetch("/get_sess").then((res) => {
-//     res.text().then((data) => {
-//         // document.getElementsByClassName("navbar-text")[0].innerHTML = data;
-//         // //console.log(data + "sessionnnnnnnnnnn");
-//         // document.getElementById("Ne").innerHTML = data
-//         sessionStorage.setItem('sess', data);
-//     }).then((data) => {
-//         if (sessionStorage.getItem("sess") != "1") {
-//             window.alert("Login to view the page")
-//             window.location.assign("login.html")
-//         } else {
-//             fetch("/get_userDetails").then((res) => {
-//                 console.log("helloooo")
-//                 res.json().then((data) => {
-//                     console.log(res)
 
-//                     console.log(data)
-//                     sessionStorage.setItem('user_id', data.user_id)
-//                     sessionStorage.setItem('user_name', data.user_name)
-//                     sessionStorage.setItem('gender', data.gender)
-//                     sessionStorage.setItem('dob', data.dob)
-//                     sessionStorage.setItem('mobile', data.mobile)
-
-//                 })
-
-//             });
-
-
-//         }
-
-//     })
-// });
-
-
-
-
-// fetch("/get_token").then((res) => {
-//     res.text().then((data) => {
-//         // document.getElementsByClassName("navbar-text")[0].innerHTML = data;
-//         //console.log(data);
-//         console.log('hi')
-//         // document.getElementById("Ne").innerHTML = data
-//         sessionStorage.setItem('token', data);
-//     })
-// });
-
-
-// ==================================================================================
-
-// let planeNodes = {
-//     delhi : 0,
-//     jaipur : 1,
-//     ahmedabad : 2,
-//     mumbai : 3,
-//     hyderabad : 4,
-//     kolkata : 5,
-//     bangalore :6
-// }
 
 let planeNodes = ["delhi", "jaipur", "ahmedabad", "mumbai", "hyderabad", "kolkata", "bangalore"]
 
@@ -480,26 +423,3 @@ function selectFlight() {
 function showPastBookings() {
 
 }
-
-
-
-// function createpost(){
-
-//     const options = {
-//         method: "GET",
-//         headers: {
-//           "Authorisation": "Bearer " + sessionStorage.getItem('token')
-//         },
-//         //body: JSON.stringify(cartArray)
-//       }; 
-
-//     fetch('/data', options).then((res)  => res.json().then((data) => {
-//         console.log(data)
-//         console.log("abhra ghosh")
-//         let message = data;
-//         console.log(data.message)
-//         document.getElementById('post').innerHTML = data.message;
-//     })).catch((err) => console.log(err))
-
-// console.log("hello")
-// }

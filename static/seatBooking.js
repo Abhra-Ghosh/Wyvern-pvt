@@ -22,8 +22,8 @@ function flightSearch() { //date according to day1,day2,day3.....day6
     const options = {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
-            // 'Content-Type': 'application/x-www-form-urlencoded',
+            'Content-Type': 'application/json',
+            "Authorisation": "Bearer " + sessionStorage.getItem('token')
         },
         body: JSON.stringify(getDetails)
     }
@@ -111,8 +111,8 @@ function bookSeats() {
     const pasOptions = {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
-
+            'Content-Type': 'application/json',
+            "Authorisation": "Bearer " + sessionStorage.getItem('token')
         },
         body: JSON.stringify(allDetails)
     }

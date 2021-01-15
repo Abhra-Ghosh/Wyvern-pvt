@@ -24,7 +24,7 @@
 
 <body>
 
-    <div style='display:block;position:fixed;' id='loader'>
+    <div style='display:none; position:fixed;' id='loader'>
 
         <div style='position:fixed;z-index:10;background-image:url(./images/dragon3.png);height:200px;width:200px;top:38%;left:44.5%'></div>
     
@@ -271,18 +271,18 @@
     <script>
         if (sessionStorage.getItem('user_name')) {
             //console.log("thereeeee!!")
+            document.getElementById('loader').style.display='block'
             document.getElementById('login-nav').innerHTML = sessionStorage.getItem('user_name')
             document.getElementById('lin').style.display = 'none'
             document.getElementById('lout').style.display = 'block'
+            setTimeout(()=>{
+            document.getElementById('loader').style.display='none'
+            document.getElementById('main-content').style.display='block'
+        },3000)
         }
 
 
-        setTimeout(()=>{
-            document.getElementById('loader').style.display='none'
-            document.getElementById('main-content').style.display='block'
-
-
-        },3000)
+        
 
 
 
@@ -303,11 +303,14 @@
         }
 
         if (!sessionStorage.getItem('sess')) {
+     
             document.getElementById('main-content').style.display = "none"
-            setTimeout(() => {
+           
+            
+                document.getElementById('loader').style.display='none'
                 window.alert('Please login to view this page')
                 window.location.replace('home-page.html')
-            }, 1000)
+          
         }
 
         function showBookings() {

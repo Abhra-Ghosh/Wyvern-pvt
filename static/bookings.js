@@ -22,14 +22,14 @@ function logOut() {
     document.getElementById('lout').style.display = 'none'
 }
 
-$(document).ready(()=>{
-    for(let i=1;i<=4;i++){
-        $(`.nav-elem-${i} a`).css("box-shadow","none")
+$(document).ready(() => {
+    for (let i = 1; i <= 4; i++) {
+        $(`.nav-elem-${i} a`).css("box-shadow", "none")
     }
     $(".nav-elem-2 a").css("box-shadow", "0 3px 0px rgb(219, 39, 99)")
 })
 
-setTimeout(()=>{
+setTimeout(() => {
     getTicketsPassengers()
 }, 2000)
 
@@ -42,7 +42,8 @@ function getTicketsPassengers() {
     const options = {
         method: "POST",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "Authorisation": "Bearer " + sessionStorage.getItem('token')
         },
         body: JSON.stringify(data)
     };
@@ -65,7 +66,7 @@ function getTicketsPassengers() {
                     // past=data[1]
                     // upcoming=data[0]
                     past = [...data]
-                    console.log('Past tickets',past)
+                    console.log('Past tickets', past)
 
                 })
                 .then(data => {
@@ -110,6 +111,7 @@ function getTicketsPassengers() {
 $(document).on('click', '.login-btn', animateBtn)
 $(document).on('click', '.pass-dets-btn', animateBtn)
 $(document).on('click', '.past-pass-dets-btn', animateBtn)
+
 function animateBtn(evt) {
     $(evt.target).addClass("animateButton");
     setTimeout(() => {
@@ -145,18 +147,18 @@ function displayTickets() {
     }
 
 
-    
-    
+
+
     for (let i = 0; i < current.length; i++) {
         let passArr = current[i]
         //console.log(passArr[i])
         // console.log(current.length)
         console.log(passArr[0])
-        var departureDate=passArr[0].boarding
+        var departureDate = passArr[0].boarding
         const d = new Date(departureDate);
-        var date=d.getDate()
-        var month=monthNames[d.getMonth()]
-        var year=d.getFullYear()
+        var date = d.getDate()
+        var month = monthNames[d.getMonth()]
+        var year = d.getFullYear()
         //console.log("dmy cur",date,month,year)
 
         currBooking = `
@@ -275,11 +277,11 @@ function displayTickets() {
 
         let pastPassArr = past[i]
         console.log('past array', pastPassArr)
-        var departureDate=pastPassArr[0].boarding
+        var departureDate = pastPassArr[0].boarding
         const d = new Date(departureDate);
-        var date=d.getDate()
-        var month=monthNames[d.getMonth()]
-        var year=d.getFullYear()
+        var date = d.getDate()
+        var month = monthNames[d.getMonth()]
+        var year = d.getFullYear()
         //console.log("dmy",date,month,year)
 
         prevBooking = ` <div class="content-previous-booking content-previous-booking-${i}" >
@@ -354,7 +356,7 @@ function displayTickets() {
             $(`.status-value-${pastPassArr[0].pnr}`).text("COMPLETED")
             $(`.status-value-${pastPassArr[0].pnr}`).css("color", "rgb(25, 154, 139)");
 
-        }else if(pastPassArr[0].status == "cancelled"){
+        } else if (pastPassArr[0].status == "cancelled") {
             // console.log("status canc", i)
             // console.log($(".status-value"))
             $(`.status-value-${pastPassArr[0].pnr}`).text("CANCELLED")
@@ -406,7 +408,7 @@ function displayTickets() {
     }
 
     console.log('length', $("#prevBookings").children().length)
-    if ($("#prevBookings").children().length== 1) {
+    if ($("#prevBookings").children().length == 1) {
         var elem = `
                     <div class="no-prev-bookings">
                     No Previous Bookings
@@ -446,35 +448,32 @@ function displayPastPass(i) {
 
 function cancelTicket(pnr) {
 
-    let ask=window.confirm("Are you sure you want to cancel your ticket?")
+    let ask = window.confirm("Are you sure you want to cancel your ticket?")
 
-    if(ask==true){
+    if (ask == true) {
         var data = {
             pnr: pnr
         }
-    
+
         const options = {
             method: "POST",
             headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
+                "Authorisation": "Bearer " + sessionStorage.getItem('token')
             },
             body: JSON.stringify(data)
         };
-    
+
         fetch('/cancelTickets', options).then(res => res.json()).then((data) => {
             if (data.message == 'cancelled') {
-    
+
                 window.alert('Cancelled Successfully')
-    
-    
-    
             }
             return
         }).then((data) => {
             window.location.reload();
         })
-    
-    }else{
+    } else {
         return
     }
 }

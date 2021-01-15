@@ -100,12 +100,13 @@
                             </span>
                         </label>
                     </div>
-    
+
                 </div>
                 <button class="invisible-btn">
-                    <a class="register-btn" >
+                    <a class="register-btn">
                         <svg width="277" height="62">
-                            <rect x="5" y="5" rx="25" fill="none" stroke="url(#gradient)" width="240" height="50"></rect>
+                            <rect x="5" y="5" rx="25" fill="none" stroke="url(#gradient)" width="240" height="50">
+                            </rect>
                         </svg>
                         <span>
                             Register
@@ -125,12 +126,11 @@
         </defs>
     </svg>
     <script>
-       
         function register(e) {
             // console.log("hello")
             // document.getElementById('registerform').submit(function (e) {
-                e.preventDefault();
-               
+            e.preventDefault();
+
             // });
             let name = document.getElementById('name').value
             let birthday = document.getElementById('birthday').value

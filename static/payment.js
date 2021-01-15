@@ -1059,24 +1059,14 @@ function continueToPayment() {
 	for (let j = 0; j < n * 5; j += 5) {
 
 		var name = document.getElementsByClassName('h6')[j].innerHTML
-		console.log(name)
+
 		var dob = document.getElementsByClassName('h6')[j + 1].innerHTML
-		console.log(dob)
 
 		var gender = document.getElementsByClassName('h6')[j + 2].innerHTML
-		console.log(gender)
 
 		var email = document.getElementsByClassName('h6')[j + 3].innerHTML
-		console.log(email)
 
 		var phone = document.getElementsByClassName('h6')[j + 4].innerHTML
-		console.log(phone)
-
-
-
-
-
-
 
 		passengers.push({
 
